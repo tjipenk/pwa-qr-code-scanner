@@ -1,11 +1,11 @@
-FROM node:10
+FROM node:10.13
 WORKDIR /usr/src/app
 COPY package*.json ./
 RUN npm install --global gulp-cli bower
 # RUN npm install -g yarn
-RUN npm install
+# RUN npm install
 COPY . .
-# RUN yarn
+RUN yarn
+EXPOSE 8080
 RUN bower install
 CMD ["gulp", "dev"]
-EXPOSE 80 3000
